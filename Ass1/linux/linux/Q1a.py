@@ -8,7 +8,8 @@ def second_derivative(fx, x, h=1e-5):
 def isConvex(fx, SrNo, interval):
     x_values = np.linspace(interval[0], interval[1], 100)
     second_derivatives = [second_derivative(fx, SrNo, x) for x in x_values]
-    
+    for i in range(1, len(second_derivatives), 5):
+        print(x_values[i], fx(x_values[i]), second_derivatives[i])
     # Check if all second derivatives are non-negative (convex)
     is_convex = all(d >= 0 for d in second_derivatives)
     is_strictly_convex = all(d > 0 for d in second_derivatives)
